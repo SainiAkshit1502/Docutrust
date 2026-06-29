@@ -1,0 +1,38 @@
+# Git
+.git
+.gitignore
+
+# Docker
+.dockerignore
+docker-compose.yml
+
+# Virtual Environments
+.venv
+env/
+venv/
+ENV/
+*.venv
+
+# Python cache & build files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+build/
+dist/
+*.egg-info/
+
+# Local configuration
+.env
+backend/.env
+
+# Development / Test files
+backend/test_*.py
+backend/test_eviction.py
+backend/test_pipeline.py
+backend/test_processor.py
+frontend/.vscode/
+.vscode/
+.idea/

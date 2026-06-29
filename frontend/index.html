@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocuTrust - Enterprise Advanced self-correcting RAG Platform</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css?v=2.0">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Status Bar Navigation -->
+        <header class="app-header">
+            <div class="logo-area">
+                <i class="fa-solid fa-shield-halved brand-icon"></i>
+                <div class="brand-text">
+                    <h1>DocuTrust</h1>
+                    <span>Enterprise Advanced RAG Platform</span>
+                </div>
+            </div>
+            
+            <div class="system-status">
+                <div class="status-indicator" id="api-status">
+                    <span class="status-dot offline"></span>
+                    <span class="status-label">FastAPI API: Offline</span>
+                </div>
+                <div class="status-indicator" id="db-status">
+                    <span class="status-dot offline"></span>
+                    <span class="status-label">MongoDB Atlas: Offline</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard Split-Pane Layout -->
+        <main class="dashboard-grid">
+            <!-- Left Pane: PDF Ingestion & Pipeline Logs -->
+            <section class="left-pane card">
+                <div class="pane-header">
+                    <h2><i class="fa-solid fa-file-import"></i> Document Ingestion</h2>
+                    <p>Upload multi-page PDFs to partition, embed, and index locally.</p>
+                </div>
+
+                <!-- PDF Drag & Drop Dropzone -->
+                <div class="upload-zone" id="drop-zone">
+                    <input type="file" id="file-input" accept=".pdf" style="display: none;">
+                    <div class="upload-icon">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <h3>Drag & drop PDF here</h3>
+                    <p>or click to browse local files</p>
+                    <span class="file-limits">Supported format: PDF only</span>
+                </div>
+
+                <!-- Upload Progress & Status -->
+                <div class="upload-progress-container" id="progress-container" style="display: none;">
+                    <div class="upload-info">
+                        <span id="filename-display"><i class="fa-solid fa-file-pdf"></i> document.pdf</span>
+                        <span id="upload-percent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <span class="progress-status-text" id="status-text">Uploading file stream...</span>
+                </div>
+
+                <!-- Processed Documents Registry -->
+                <div class="documents-list-section">
+                    <h3>Indexed Corpus</h3>
+                    <div class="documents-list" id="documents-list">
+                        <div class="empty-docs-message">
+                            <i class="fa-regular fa-folder-open"></i>
+                            <p>No documents uploaded yet</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent Log Trace Terminal -->
+                <div class="agent-terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-title"><i class="fa-solid fa-terminal"></i> Step-by-Step CRAG Pipeline Log Trace</span>
+                        <div class="terminal-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                    </div>
+                    <div class="terminal-body" id="terminal-log">
+                        <div class="terminal-line system-line">[System] Initialize DocuTrust agent console. Awaiting pipeline activity...</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Pane: Conversational QA and Citations -->
+            <section class="right-pane card">
+                <div class="pane-header">
+                    <h2><i class="fa-solid fa-comments"></i> Advanced Self-Correcting Chat</h2>
+                    <p>Query the corrective RAG pipeline. Verify cross-encoder relevance scores and view source citations.</p>
+                </div>
+
+                <!-- Chat Interaction History Window -->
+                <div class="chat-history" id="chat-history">
+                    <div class="welcome-chat-message">
+                        <i class="fa-solid fa-robot welcome-bot-icon"></i>
+                        <h3>Ask DocuTrust Agent</h3>
+                        <p>Upload a document on the left, then ask a query. The RAG pipeline will check document chunks, rerank relevance, rewrite queries if context is missing, and output strict verification sources.</p>
+                    </div>
+                </div>
+
+                <!-- Chat Typing Indicator -->
+                <div class="typing-indicator-wrapper" id="typing-indicator" style="display: none;">
+                    <div class="bot-avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="typing-bubble">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span class="typing-status-text">CRAG Pipeline executing nodes...</span>
+                </div>
+
+                <!-- Chat Query Input Controls -->
+                <form class="chat-input-area" id="chat-form">
+                    <input type="text" id="query-input" placeholder="Type a search query about corporate packets..." required autocomplete="off">
+                    <button type="submit" class="send-btn" id="send-button">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- Script connection linking logic controller -->
+    <script src="app.js"></script>
+</body>
+</html>
