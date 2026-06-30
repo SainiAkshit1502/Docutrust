@@ -1,5 +1,5 @@
 # DocuTrust: Enterprise Advanced RAG Platform with Automated Self-Correction
-**B.Tech Major Project in Computer Science and Engineering**
+**Major Project**
 
 DocuTrust is a production-ready, local-first Corrective Retrieval-Augmented Generation (CRAG) platform designed to parsing, index, and query complex corporate document packets securely without data leakage. Basic AI document portals often suffer from hallucinated outputs and unverified responses when querying policy text. DocuTrust addresses this by combining dense vector searches with local cross-encoder grading, real-time node routing, query rewriting, and automated web fallback indexing.
 
