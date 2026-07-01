@@ -26,7 +26,7 @@ ENV PYTHONPATH=/app
 COPY --from=builder /root/.local /root/.local
 COPY . /app
 
-EXPOSE 7860
+EXPOSE 8000
 
 # Explicitly bind to 0.0.0.0 to accept traffic outside the container scope
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
